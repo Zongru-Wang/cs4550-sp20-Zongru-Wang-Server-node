@@ -3,12 +3,12 @@ const quizzesService
 
 module.exports = function (app) {
 
-    app.get('/api/quizzes', (req, res) =>
-        quizzesService.findAllQuizzes()
-            .then(allQuizzes => res.json(allQuizzes)))
+    app.get('/api/quizzes', (req, res) => {
+        res.send(quizzesService.findAllQuizzes())
+    })
 
-    app.get('/api/quizzes/:qzid', (req, res) =>
-        quizzesService.findQuizById(req.params['qzid'])
+    app.get('/api/quizzes/:qid', (req, res) =>
+        quizzesService.findQuizById(req.params['qid'])
             .then(quiz => {
                 res.json(quiz)
             }))
